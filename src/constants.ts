@@ -1,46 +1,36 @@
-import { Label } from './types.js';
+import { type ComAtprotoLabelDefs } from '@atproto/api';
 
 export const DELETE = 'insert-rkey-of-delete-post-here';
-export const LABEL_LIMIT = 1;
-export const LABELS: Label[] = [
+export const LABEL_LIMIT = 2;
+export const LABELS: ComAtprotoLabelDefs.LabelValueDefinition[] = [
   {
-    rkey: 'insert-rkey-here',
-    identifier: 'earth',
+    rkey: 'scam',
+    identifier: 'scam',
+    severity: 'alert',
+    defaultSetting: 'warn',
+    blurs: 'content',
     locales: [
-      { lang: 'en', name: 'Earth 🌎', description: 'Earth'},
-      { lang: 'pt-BR', name: 'Terra 🌎', description: 'Terra'},
+      { lang: 'en', name: 'Scam❗', description: 'This account is fraudulent' },
     ]
   },
   {
-    rkey: 'insert-rkey-here',
-    identifier: 'fire',
+    rkey: 'impersonator',
+    identifier: 'impersonator',
+    severity: 'alert',
+    defaultSetting: 'warn',
+    blurs: 'content',
     locales: [
-      { lang: 'en', name: 'Fire 🔥', description: 'Fire'},
-      { lang: 'pt-BR', name: 'Fogo 🔥', description: 'Fogo'},
+      { lang: 'en', name: 'Impersonator❗', description: 'This account is impersonating a high-value account' },
     ]
   },
   {
-    rkey: 'insert-rkey-here',
-    identifier: 'air',
+    rkey: 'verified',
+    identifier: 'verified',
+    severity: 'inform',
+    defaultSetting: 'ignore',
+    blurs: 'none',
     locales: [
-      { lang: 'en', name: 'Air 💨', description: 'Air'},
-      { lang: 'pt-BR', name: 'Ar 💨', description: 'Ar'},
-    ]
-  },
-  {
-    rkey: 'insert-rkey-here',
-    identifier: 'water',
-    locales: [
-      { lang: 'en', name: 'Water 💧', description: 'Water'},
-      { lang: 'pt-BR', name: 'Água 💧', description: 'Água'},
-    ]
-  },
-  {
-    rkey: 'insert-rkey-here',
-    identifier: 'love',
-    locales: [
-      { lang: 'en', name: 'Love 💞', description: 'Love'},
-      { lang: 'pt-BR', name: 'Amor 💞', description: 'Amor'},
+      { lang: 'en', name: 'Verified☑️', description: 'This account has been verified to be legitimate' },
     ]
   },
 ];

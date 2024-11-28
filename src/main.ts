@@ -1,5 +1,6 @@
 import { CommitCreateEvent, Jetstream } from '@skyware/jetstream';
 import fs from 'node:fs';
+import WebSocket from 'ws';
 
 import { CURSOR_UPDATE_INTERVAL, DID, FIREHOSE_URL, HOST, METRICS_PORT, PORT, WANTED_COLLECTION } from './config.js';
 import { label, labelerServer } from './label.js';
@@ -27,10 +28,16 @@ try {
     process.exit(1);
   }
 }
-
+console.log({
+  wantedCollections: [WANTED_COLLECTION],
+  // endpoint: FIREHOSE_URL,
+  ws: WebSocket,
+  cursor: cursor,
+});
 const jetstream = new Jetstream({
   wantedCollections: [WANTED_COLLECTION],
   endpoint: FIREHOSE_URL,
+  ws: WebSocket,
   cursor: cursor,
 });
 
@@ -55,6 +62,7 @@ jetstream.on('close', () => {
 
 jetstream.on('error', (error) => {
   logger.error(`Jetstream error: ${error.message}`);
+  console.error(error);
 });
 
 jetstream.onCreate(WANTED_COLLECTION, (event: CommitCreateEvent<typeof WANTED_COLLECTION>) => {

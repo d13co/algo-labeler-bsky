@@ -30,8 +30,8 @@ if (answer === 'y') {
   }
   console.log('All posts have been deleted.');
 } else {
-  console.log('Operation cancelled.');
-  process.exit(0);
+  console.log('Not deleting');
+  // process.exit(0);
 }
 
 const post = await bot.post({
